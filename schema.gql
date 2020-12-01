@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type FilledErrorType {
+  field: String!
+  message: String!
+}
+
+type User {
+  id: ID!
+  email: String!
+  username: String!
+}
+
+type Query {
+  users: [User!]!
+  user(input: FindUserInput!): UserResponse
+  me: UserResponse
+}
+
+union UserResponse = User | UnkownUser
+
+type UnkownUser {
+  field: String!
+  message: String!
+}
+
+input FindUserInput {
+  id: ID!
+}
+
+type Mutation {
+  register(input: RegisterInput!): RegisterResponse!
+  login(input: LoginInput!): LoginResponse!
+  logout: FilledErrorType
+}
+
+union RegisterResponse = User | InvalidUser | DuplicateUser
+
+type InvalidUser {
+  field: String!
+  message: String!
+}
+
+type DuplicateUser {
+  field: String!
+  message: String!
+}
+
+input RegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+union LoginResponse = SessionIdResponse | InvalidLogin | LockedUser | UnconfirmedUser
+
+type SessionIdResponse {
+  sessionId: String!
+}
+
+type InvalidLogin {
+  field: String!
+  message: String!
+}
+
+type LockedUser {
+  field: String!
+  message: String!
+}
+
+type UnconfirmedUser {
+  field: String!
+  message: String!
+}
+
+input LoginInput {
+  usernameOrEmail: String!
+  password: String!
+}
