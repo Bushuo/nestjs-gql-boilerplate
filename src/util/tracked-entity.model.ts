@@ -1,6 +1,7 @@
+import { ObjectType, Field } from "@nestjs/graphql";
 import { CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { Field } from "type-graphql";
 
+@ObjectType()
 export class TrackedEntity {
     @Field(() => String)
     @CreateDateColumn()

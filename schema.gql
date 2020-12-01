@@ -8,6 +8,8 @@ type FilledErrorType {
 }
 
 type User {
+  createdAt: String!
+  updatedAt: String!
   id: ID!
   email: String!
   username: String!
