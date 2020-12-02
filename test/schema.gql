@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  createdAt: String!
+  updatedAt: String!
+  id: ID!
+  email: String!
+  username: String!
+}
+
+type Query {
+  users: [User!]!
+  user(input: FindUserInput!): UserResponse
+}
+
+union UserResponse = User | UnkownUser
+
+type UnkownUser {
+  field: String!
+  message: String!
+}
+
+input FindUserInput {
+  id: ID!
+}
